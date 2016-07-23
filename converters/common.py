@@ -21,7 +21,7 @@ def gen_feats(row):
         field = 'I{0}'.format(j)
         value = row[field]
         if value != '':
-            value = int(value)
+            value = float(value)
             if value > 2:
                 value = float(math.log(float(value))**2)
             else:
