@@ -23,7 +23,7 @@ def gen_feats(row):
         if value != '':
             value = int(value)
             if value > 2:
-                value = int(math.log(float(value))**2)
+                value = float(math.log(float(value))**2)
             else:
                 value = 'SP'+str(value)
         key = field + '-' + str(value)
