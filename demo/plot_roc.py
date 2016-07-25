@@ -6,7 +6,7 @@ import csv
 # load csv file
 labels = []
 with open('/storage/phuongdv/vc-data/te.csv') as csvfile:
-    reader = csv.DictReader(csvfile)
+    reader = csv.DictReader(csvfile, delimiter=' ')
     for row in reader:
         labels.append(int(row["Label"]))
 
