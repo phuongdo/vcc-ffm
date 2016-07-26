@@ -17,7 +17,32 @@ args = vars(parser.parse_args())
 # target_cat_feats = ['C1-', 'C2-', 'C3-', 'C4-', 'C5-', 'C6-', 'C7-', 'C8-', 'C9-', 'C10-', 'C11-', 'C12-', 'C13-',
 #                     'C14-', 'C15-', 'C16-', 'C17-', 'C18-']
 
-target_cat_feats = read_freqent_feats(10)
+
+# this target variables are taken from XgBoost Tree ( contact Quang_)
+#
+# field:7	value:10
+# field:15	value:300
+# field:7	value:2
+# field:13	value:1
+# field:7	value:1
+# field:16	value:250
+# field:16	value:600
+# field:2	value:27989d
+# field:11	value:b6536a
+# field:4	value:5
+# field:2	value:387068
+# field:8	value:10
+# field:6	value:30685
+# field:8	value:14
+# field:4	value:4
+# field:12	value:2913
+# field:6	value:10059
+# field:2	value:16f332
+# field:6	value:29526
+
+strF = 'C7-10,C15-300,C7-2,C13-1,C7-1,C16-250,C16-600,C2-27989d,C11-b6536a,C4-5,C2-387068,C8-10,C6-30685,C8-14,C4-4,C12-2913,C6-10059,C2-16f332,C6-29526'
+target_cat_feats = strF.split(',')
+
 with open(args['dense_path'], 'w') as f_d, open(args['sparse_path'], 'w') as f_s:
     for row in csv.DictReader(open(args['csv_path']), delimiter=' '):
         feats = []
