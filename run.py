@@ -9,25 +9,25 @@ start = time.time()
 # cmd = './utils/count.py /storage/phuongdv/vc-data/tr.csv > fc.trva.t10.txt'
 # subprocess.call(cmd, shell=True)
 #
-# cmd = 'converters/parallelizer-a.py -s {nr_thread} converters/pre-a.py /storage/phuongdv/vc-data/tr.csv tr.gbdt.dense tr.gbdt.sparse'.format(nr_thread=NR_THREAD)
-# subprocess.call(cmd, shell=True)
+cmd = 'converters/parallelizer-a.py -s {nr_thread} converters/pre-a.py /storage/phuongdv/vc-data/tr.csv tr.gbdt.dense tr.gbdt.sparse'.format(nr_thread=NR_THREAD)
+subprocess.call(cmd, shell=True)
 #
-# cmd = 'converters/parallelizer-a.py -s {nr_thread} converters/pre-a.py /storage/phuongdv/vc-data/te.csv te.gbdt.dense te.gbdt.sparse'.format(nr_thread=NR_THREAD)
-# subprocess.call(cmd, shell=True)
+cmd = 'converters/parallelizer-a.py -s {nr_thread} converters/pre-a.py /storage/phuongdv/vc-data/te.csv te.gbdt.dense te.gbdt.sparse'.format(nr_thread=NR_THREAD)
+subprocess.call(cmd, shell=True)
 #
-# cmd = './gbdt -t 30 -s {nr_thread} te.gbdt.dense te.gbdt.sparse tr.gbdt.dense tr.gbdt.sparse te.gbdt.out tr.gbdt.out'.format(nr_thread=NR_THREAD)
-# subprocess.call(cmd, shell=True)
+cmd = './gbdt -t 30 -s {nr_thread} te.gbdt.dense te.gbdt.sparse tr.gbdt.dense tr.gbdt.sparse te.gbdt.out tr.gbdt.out'.format(nr_thread=NR_THREAD)
+subprocess.call(cmd, shell=True)
 
 # cmd = './mark1 -r 0.03 -s 1 -t 13 te.gbdt.sparse  tr.gbdt.sparse'
 
 # cmd = 'rm -f te.gbdt.dense te.gbdt.sparse tr.gbdt.dense tr.gbdt.sparse'
 # subprocess.call(cmd, shell=True)
 #
-# cmd = 'converters/parallelizer-b.py -s {nr_thread} converters/pre-b.py /storage/phuongdv/vc-data/tr.csv tr.gbdt.out tr.ffm'.format(nr_thread=NR_THREAD)
-# subprocess.call(cmd, shell=True)
+cmd = 'converters/parallelizer-b.py -s {nr_thread} converters/pre-b.py /storage/phuongdv/vc-data/tr.csv tr.gbdt.out tr.ffm'.format(nr_thread=NR_THREAD)
+subprocess.call(cmd, shell=True)
 #
-# cmd = 'converters/parallelizer-b.py -s {nr_thread} converters/pre-b.py /storage/phuongdv/vc-data/te.csv te.gbdt.out te.ffm'.format(nr_thread=NR_THREAD)
-# subprocess.call(cmd, shell=True)
+cmd = 'converters/parallelizer-b.py -s {nr_thread} converters/pre-b.py /storage/phuongdv/vc-data/te.csv te.gbdt.out te.ffm'.format(nr_thread=NR_THREAD)
+subprocess.call(cmd, shell=True)
 
 # cmd = 'rm -f te.gbdt.out tr.gbdt.out'
 # subprocess.call(cmd, shell=True)
