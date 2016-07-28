@@ -38,7 +38,6 @@ with open(args['out_path'], 'w') as f:
             if type == 'C':
                 field += 0  # 13>>0
             feats.append((field, feat))
-
         # for i, feat in enumerate(line_gbdt.strip().split()[1:], start=1):
         #     field = i + 75  #
         #     feats.append((field, str(i) + ":" + feat))
