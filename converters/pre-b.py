@@ -28,7 +28,7 @@ frequent_feats = read_freqent_feats(args['threshold'])
 print(args['csv_path'])
 
 with open(args['out_path'], 'w') as f:
-    for row, line_gbdt in zip(csv.DictReader(open(args['csv_path']), delimiter=' '), open(args['gbdt_path'])):
+    for row in zip(csv.DictReader(open(args['csv_path']), delimiter=' ')):
         feats = []
         for feat in gen_feats(row):
             field = feat.split('-')[0]
