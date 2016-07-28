@@ -29,7 +29,7 @@ def main():
 
     # split(args['src2_path'], nr_thread, False)
 
-    parallel_convert(args['cvt_path'], [args['src1_path'], args['src2_path'], args['dst_path']], nr_thread)
+    parallel_convert(args['cvt_path'], [args['src1_path'], args['dst_path']], nr_thread)
 
     cat(args['dst_path'], nr_thread)
 
