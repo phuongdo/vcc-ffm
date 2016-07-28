@@ -32,16 +32,16 @@ with open(args['out_path'], 'w') as f:
         feats = []
         for feat in gen_feats(row):
             field = feat.split('-')[0]
-            type, field = field[0], float(field[1:])
+            type, field = field[0], int(field[1:])
             if type == 'C' and feat not in frequent_feats:
                 feat = feat.split('-')[0] + 'less'
             if type == 'C':
-                field += 58  # 13>>0
+                field += 0  # 13>>0
             feats.append((field, feat))
 
-        for i, feat in enumerate(line_gbdt.strip().split()[1:], start=1):
-            field = i + 75  #
-            feats.append((field, str(i) + ":" + feat))
+        # for i, feat in enumerate(line_gbdt.strip().split()[1:], start=1):
+        #     field = i + 75  #
+        #     feats.append((field, str(i) + ":" + feat))
 
         feats = gen_hashed_fm_feats(feats, args['nr_bins'])
         f.write(row['Label'] + ' ' + ' '.join(feats) + '\n')

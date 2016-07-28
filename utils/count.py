@@ -15,7 +15,7 @@ counts = collections.defaultdict(lambda: [0, 0, 0])
 
 for i, row in enumerate(csv.DictReader(open(args['csv_path']), delimiter=' '), start=1):
     label = row['Label']
-    for j in range(1, 19):
+    for j in range(1, 73):
         field = 'C{0}'.format(j)
         value = row[field]
         if label == '0':
