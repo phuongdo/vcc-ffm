@@ -19,7 +19,7 @@ headers = ["Label"]
 for i in range(1, 73):
     headers.append("C{}".format(i))
 
-print(",".join(headers))
+print(" ".join(headers))
 #
 # HEADER = "Label,I1,I2,I3,I4,I5,I6,I7,I8,I9,I10,I11,I12,I13,I14,I15,I16,I17,I18,I19,I20,I21,I22,I23,I24,I25,I26,I27,I28,I29,I30,I31,I32,I33,I34,I35,I36,I37,I38,I39,I40,I41,I42,I43,I44,I45,I46,I47,I48,I49,I50,I51,I52,I53,I54,I55,I56,I57,C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18"
 # arr = HEADER.split(",")
