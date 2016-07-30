@@ -28,7 +28,7 @@ frequent_feats = read_freqent_feats(args['threshold'])
 print(args['csv_path'])
 
 with open(args['out_path'], 'w') as f:
-    for row in csv.DictReader(open(args['csv_path']), delimiter=' '):
+    for row, line_gbdt in zip(csv.DictReader(open(args['csv_path'])), open(args['gbdt_path'])):
         feats = []
         # print(row)
         for feat in gen_feats(row):
@@ -39,9 +39,9 @@ with open(args['out_path'], 'w') as f:
             if type == 'C':
                 field += 0  # 13>>0
             feats.append((field, feat))
-        # for i, feat in enumerate(line_gbdt.strip().split()[1:], start=1):
-        #     field = i + 75  #
-        #     feats.append((field, str(i) + ":" + feat))
+        for i, feat in enumerate(line_gbdt.strip().split()[1:], start=1):
+            field = i + 72  #
+            feats.append((field, str(i) + ":" + feat))
 
         feats = gen_hashed_fm_feats(feats, args['nr_bins'])
         f.write(row['Label'] + ' ' + ' '.join(feats) + '\n')

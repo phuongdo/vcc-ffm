@@ -1,1 +1,28 @@
 Demo ffm
+
+I1-35: User-interest normalized (.3f format)
+I36-57: banner-categories normalized (.3f format)
+
+C1: weekday
+C2: hour
+C3: domain
+C4: geo
+C5: zoneId
+C6: os_code
+C7: browser_code
+C8: age
+C9: sex
+C10: banname
+C11: label_id
+C12: width
+C13: height
+
+
+project
+|---README.md ( how to install, dependency, run)
+|--- requirement.txt ( install dependency)
+|---src
+|-------lib
+|-------package1
+|-------package2
+|-------examples (run examples)

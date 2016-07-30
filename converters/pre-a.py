@@ -40,7 +40,47 @@ args = vars(parser.parse_args())
 # field:2	value:16f332
 # field:6	value:29526
 
-strF = 'C7-10,C15-300,C7-2,C13-1,C7-1,C16-250,C16-600,C2-27989d,C11-b6536a,C4-5,C2-387068,C8-10,C6-30685,C8-14,C4-4,C12-2913,C6-10059,C2-16f332,C6-29526'
+# 7,15,13,16,2,11,4,2,8,6,12
+
+
+
+#
+# C1: weekday C1
+# C2: hour C2
+# C3: domain (*) C3
+# #C4: path
+# C5: geo(*) C4
+# #C6: campaignId
+# C7: zoneId (*) C5
+# C8: os_code (*) C6
+# C9: browser_code(*) C7
+# C10: age C8
+# C11: sex  C9
+# C12: banname(*) C10
+# C13: label_id(*)  C11
+# # C14: filetype
+# # C15: url
+# C16: width (*)  C12
+# C17: height (*)  C13
+# #C18: bantype
+
+
+# C1: weekday
+# C2: hour
+# C3: domain
+# C4: geo
+# C5: zoneId
+# C6: os_code
+# C7: browser_code
+# C8: age
+# C9: sex
+# C10: banname
+# C11: label_id
+# C12: width
+# C13: height
+
+
+strF = 'C6-10,C6-1,C12-300,C6-2,C13-250,C13-600,C3-27989d,C10-b6536a,C4-5,C3-387068,C7-10,C5-30685,C7-14,C4-4,C11-2913,C5-10059,C3-16f332,C5-29526'
 target_cat_feats = strF.split(',')
 
 with open(args['dense_path'], 'w') as f_d, open(args['sparse_path'], 'w') as f_s:
@@ -54,7 +94,7 @@ with open(args['dense_path'], 'w') as f_d, open(args['sparse_path'], 'w') as f_s
         f_d.write(row['Label'] + ' ' + ' '.join(feats) + '\n')
 
         cat_feats = set()
-        for j in range(1, 19):
+        for j in range(1, 14):
             field = 'C{0}'.format(j)
             key = field + '-' + row[field]
             cat_feats.add(key)
@@ -64,5 +104,4 @@ with open(args['dense_path'], 'w') as f_d, open(args['sparse_path'], 'w') as f_s
         for j, feat in enumerate(target_cat_feats, start=1):
             if feat in cat_feats:
                 feats.append(str(j))
-        # print(row['Label'] + ' ' + ' '.join(feats) + '\n')
         f_s.write(row['Label'] + ' ' + ' '.join(feats) + '\n')
