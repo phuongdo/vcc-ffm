@@ -18,18 +18,18 @@ def hashstr(str, nr_bins):
 
 def gen_feats(row):
     feats = []
-    # for j in range(1, 58):
-    #     field = 'I{0}'.format(j)
-    #     value = row[field]
-    #     if value != '':
-    #         value = float(value)
-    #         if value > 2:
-    #             value = float(math.log(float(value))**2)
-    #         else:
-    #             value = 'SP'+str(value)
-    #     key = field + '-' + str(value)
-    #     feats.append(key)
-    for j in range(1, 73):
+    for j in range(1, 58):
+        field = 'I{0}'.format(j)
+        value = row[field]
+        if value != '':
+            value = float(value)
+            if value > 2:
+                value = float(math.log(float(value)) ** 2)
+            else:
+                value = 'SP' + str(value)
+        key = field + '-' + str(value)
+        feats.append(key)
+    for j in range(1, 14):
         field = 'C{0}'.format(j)
         value = row[field]
         key = field + '-' + value
