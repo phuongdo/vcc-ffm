@@ -1,4 +1,6 @@
 import sys
+
+from sklearn.metrics import average_precision_score
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
 from sklearn.metrics import log_loss
@@ -39,15 +41,15 @@ def main(argv):
 
     print("log loss : {}".format(log_loss_ffm))
     print("AUC : {}".format(roc_auc))
-
+    print("PR|AUC: {}".format(average_precision_score(labels, scores)))
     # write to a files
 
-    outfile = open(output_file, 'w')
-    outfile.write("label scores\n")
-    for i in range(0, len(labels)):
-        outfile.write("{} {}\n".format(labels[i], scores[i]))
-
-    outfile.close()
+    # outfile = open(output_file, 'w')
+    # outfile.write("label scores\n")
+    # for i in range(0, len(labels)):
+    #     outfile.write("{} {}\n".format(labels[i], scores[i]))
+    #
+    # outfile.close()
 
 
 if __name__ == '__main__':
