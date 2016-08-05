@@ -1,6 +1,7 @@
 import sys
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
+from sklearn.metrics import log_loss
 
 
 # import matplotlib.pyplot as plt
@@ -12,6 +13,7 @@ from sklearn.metrics import auc
 def main(argv):
     label_file = argv[0]
     score_file = argv[1]
+    output_file = argv[2]
     # load csv file
     labels = []
     # with open('/storage/phuongdv/vc-data/te.csv') as csvfile:
@@ -30,10 +32,22 @@ def main(argv):
         scores.append(float(line))
 
     # Compute fpr, tpr, thresholds and roc auc
-    fpr, tpr, thresholds = roc_curve(labels, scores)
+    fpr, tpr, thresholds = roc_curve(labels, scores, pos_label=1)
     roc_auc = auc(fpr, tpr)
 
+    log_loss_ffm = log_loss(labels, scores)
+
+    print("log loss : {}".format(log_loss_ffm))
     print("AUC : {}".format(roc_auc))
+
+    # write to a files
+
+    outfile = open(output_file, 'w')
+    outfile.write("label scores\n")
+    for i in range(0, len(labels)):
+        outfile.write("{} {}\n".format(labels[i], scores[i]))
+
+    outfile.close()
 
 
 if __name__ == '__main__':
