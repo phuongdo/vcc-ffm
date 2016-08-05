@@ -43,7 +43,6 @@ def main(argv):
     print("AUC : {}".format(roc_auc))
     print("PR|AUC: {}".format(average_precision_score(labels, scores)))
     # write to a files
-
     # outfile = open(output_file, 'w')
     # outfile.write("label scores\n")
     # for i in range(0, len(labels)):
