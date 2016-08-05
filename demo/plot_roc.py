@@ -4,6 +4,7 @@ from sklearn.metrics import average_precision_score
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
 from sklearn.metrics import log_loss
+from sklearn.metrics import precision_recall_curve
 
 
 # import matplotlib.pyplot as plt
@@ -37,11 +38,16 @@ def main(argv):
     fpr, tpr, thresholds = roc_curve(labels, scores, pos_label=1)
     roc_auc = auc(fpr, tpr)
 
+    # pre, rec, _ = precision_recall_curve(labels, scores, pos_label=1)
+    average_precision_macro = average_precision_score(labels, scores)
+    average_precision_micro = average_precision_score(labels, scores,
+                                                      average="micro")
+
     log_loss_ffm = log_loss(labels, scores)
 
     print("log loss : {}".format(log_loss_ffm))
     print("AUC : {}".format(roc_auc))
-    print("PR|AUC: {}".format(average_precision_score(labels, scores)))
+    print("PR|AUC_micro: {}, and PR_AUC_macro:{}".format(average_precision_micro, average_precision_macro))
     # write to a files
     # outfile = open(output_file, 'w')
     # outfile.write("label scores\n")
